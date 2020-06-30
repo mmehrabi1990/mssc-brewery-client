@@ -1,6 +1,7 @@
 package mehrabi.springframework.msscbeerclient.web.client;
 
 import mehrabi.springframework.msscbeerclient.web.model.BeerDto;
+import mehrabi.springframework.msscbeerclient.web.model.CustomerDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,5 +45,35 @@ class BreweryClientTest {
     @Test
     void testDeleteBeer() {
         breweryClient.deleteBeer(UUID.randomUUID());
+    }
+
+    @Test
+    void testGetCustomerById() {
+        CustomerDto customerById = breweryClient.getCustomerById(UUID.randomUUID());
+
+        assertNotNull(customerById);
+    }
+
+    @Test
+    void testSaveNewCustomer() {
+        CustomerDto customerById = CustomerDto.builder().customerName("joe").build();
+
+        URI uri = breweryClient.saveNewCustomer(customerById);
+
+        assertNotNull(uri);
+
+        System.out.println(uri.toString());
+    }
+
+    @Test
+    void testUpdateCustomer() {
+        CustomerDto customerById = CustomerDto.builder().customerName("jim").build();
+
+        breweryClient.updateCustomer(UUID.randomUUID(),customerById);
+    }
+
+    @Test
+    void testDeleteCustomer() {
+        breweryClient.deleteCustomer(UUID.randomUUID());
     }
 }
