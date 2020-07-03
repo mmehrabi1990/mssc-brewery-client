@@ -14,49 +14,59 @@ import java.util.UUID;
 @ConfigurationProperties(value = "sfg.brewery",ignoreUnknownFields = false)
 public class BreweryClient {
 
-    public static final String BEER_PATH = "/api/v1/beer/";
-    public static final String CUSTOMER_PATH = "/api/v1/customer/";
+    private String beerPath;
+    private String customerPath;
     private String apiHost;
 
     private final RestTemplate restTemplate;
-
-    public BreweryClient(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
-    }
 
     public void setApiHost(String apiHost) {
         this.apiHost = apiHost;
     }
 
+    public void setBeerPath(String beerPath) {
+        this.beerPath = beerPath;
+    }
+
+    public void setCustomerPath(String customerPath) {
+        this.customerPath = customerPath;
+    }
+
+    public BreweryClient(RestTemplateBuilder restTemplateBuilder) {
+        this.restTemplate = restTemplateBuilder.build();
+    }
+
+
+
     public URI saveNewBeer(BeerDto beerDto){
-        return restTemplate.postForLocation(apiHost+BEER_PATH,beerDto);
+        return restTemplate.postForLocation(apiHost+beerPath,beerDto);
     }
 
     public void updateBeer(UUID uuid,BeerDto beerDto){
-        restTemplate.put(apiHost+BEER_PATH+uuid.toString(),beerDto);
+        restTemplate.put(apiHost+beerPath+uuid.toString(),beerDto);
     }
 
     public void deleteBeer(UUID uuid){
-        restTemplate.delete(apiHost+BEER_PATH+uuid);
+        restTemplate.delete(apiHost+beerPath+uuid);
     }
 
     public BeerDto getBeerById(UUID uuid){
-        return restTemplate.getForObject(apiHost+BEER_PATH+uuid.toString(),BeerDto.class);
+        return restTemplate.getForObject(apiHost+beerPath+uuid.toString(),BeerDto.class);
     }
 
     public URI saveNewCustomer(CustomerDto customerDto){
-        return restTemplate.postForLocation(apiHost+CUSTOMER_PATH,customerDto);
+        return restTemplate.postForLocation(apiHost+customerPath,customerDto);
     }
 
     public void updateCustomer(UUID uuid,CustomerDto customerDto){
-        restTemplate.put(apiHost+CUSTOMER_PATH+uuid.toString(),customerDto);
+        restTemplate.put(apiHost+customerPath+uuid.toString(),customerDto);
     }
 
     public void deleteCustomer(UUID uuid){
-        restTemplate.delete(apiHost+CUSTOMER_PATH+uuid);
+        restTemplate.delete(apiHost+customerPath+uuid);
     }
 
     public CustomerDto getCustomerById(UUID uuid){
-        return restTemplate.getForObject(apiHost+CUSTOMER_PATH+uuid.toString(),CustomerDto.class);
+        return restTemplate.getForObject(apiHost+customerPath+uuid.toString(),CustomerDto.class);
     }
 }

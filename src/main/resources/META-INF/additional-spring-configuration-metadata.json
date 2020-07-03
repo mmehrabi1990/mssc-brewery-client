@@ -1,0 +1,38 @@
+{
+  "properties": [
+    {
+      "name": "sfg.brewery.apiHost",
+      "type": "java.lang.String",
+      "description": "Description for sfg.brewery.apiHost."
+    },
+    {
+      "name": "sfg.beerPath",
+      "type": "java.lang.String",
+      "description": "Description for sfg.beerPath."
+    },
+    {
+      "name": "sfg.customerPath",
+      "type": "java.lang.String",
+      "description": "Description for sfg.customerPath."
+    },
+    {
+      "name": "sfg.maxtotalconnections",
+      "type": "java.lang.String",
+      "description": "Description for sfg.maxtotalconnections."
+    },
+    {
+      "name": "sfg.defaultmaxtotalconnections",
+      "type": "java.lang.String",
+      "description": "Description for sfg.defaultmaxtotalconnections."
+    },
+    {
+      "name": "sfg.connectionrequesttimeout",
+      "type": "java.lang.String",
+      "description": "Description for sfg.connectionrequesttimeout."
+    },
+    {
+      "name": "sfg.sockettimeout",
+      "type": "java.lang.String",
+      "description": "Description for sfg.sockettimeout."
+    }
+  ] }
